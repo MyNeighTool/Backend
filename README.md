@@ -1,4 +1,3 @@
-
 - Base de données:
 
 > Choisir une bonne de données MySQL
@@ -16,7 +15,7 @@
 
 > Renseigner le chemin et le nom de la base de données entre les chevrons du champ <jdbc.url></jdbc.url>
 
-> Renseigner le login et password d'accès à la base de données 
+> Renseigner le login et password d'accès à la base de données
 
 
 
@@ -30,7 +29,7 @@
 
 
 
-- Executer le project avec Maven et Jetty:
+- Exécuter le project avec Maven et Jetty:
 
 > Lancer la commande:  $mvn jetty:run -P<profile-name>
 
@@ -38,8 +37,8 @@
 
 
 
-- Executer les tests unitaires depuis Eclipse:
+- Exécuter les tests unitaires depuis Eclipse:
 
 > Click droit sur le projet > Run As > JUnit Test
 
-(attention, les tests unitaires ne fonctionnement pas si ils sont lançés avec Maven
+(attention, les tests unitaires ne fonctionnement pas si ils sont lançés avec Maven)
