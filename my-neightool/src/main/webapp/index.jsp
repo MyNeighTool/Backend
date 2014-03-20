@@ -174,11 +174,12 @@
 						// et ici on peut vérifier que c'est bien le bonne objet
 				
 						//mail de rappel identifiants
+						 /* 
 						 new SendMailTLS(request.getParameter("email"),"Bonjour ! "
 						 + "\n \n Bienvenue "+ connexion.getLogin() +" sur le site MyNeighTool. Votre inscription est réussie et vous pouvez dés à présent vous connecter sur le site avec vos identifiants."
 						 + "\n \n Si vous avez besoin d'aide, n'hésitez pas à consulter la FAQ du site."
 						 + "\n \n Cordialement, l'équipe de MyNeighTool");
-						 System.out.println("Mail de confirmation envoyé");
+						 System.out.println("Mail de confirmation envoyé");*/
 						 
 						messageValue = "Vous avez bien été enregistré";
 						messageType = "success";
@@ -306,6 +307,9 @@
 				<div class="navbar-collapse collapse">
 					<form action="index.jsp?attemp=1" method="POST"
 						class="navbar-form navbar-right">
+						<div class="form-group">
+							<a href="#" data-toggle="modal" data-target="#lostpassword">Mot de passe oublié ?</a>&nbsp;&nbsp;
+						</div>
 						<div class="form-group">
 							<input type="text" placeholder="Nom d'utilisateur"
 								id="login_username" name="login_username" class="form-control"
@@ -450,5 +454,37 @@
 		<jsp:include page="<%=contentFolder + "terms.jsp"%>" />
 		<jsp:include page="<%=contentFolder + "contact.jsp"%>" />
 		<jsp:include page="<%=contentFolder + "faq.jsp"%>" />
+		<div class="modal fade" id="lostpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="contactModalLabel">Mot de passe oublié</h4>
+					</div>
+					<form method="POST" id="passwordlost" name="passwordlost" class="form-horizontal">
+						<div class="modal-body">
+							<p>Vous avez oublié votre mot de passe ? Complétez le formulaire ci-dessous.</p><br />
+							
+							<div class="form-group">
+								<label for="lostUsername" class="col-sm-4 control-label">Nom d'utilisateur</label>
+								<div class="col-sm-8">
+									<input type="text" name="lostUsername" class="form-control" placeholder="Nom d'utilisateur du compte" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lostEmail" class="col-sm-4 control-label">Adresse email</label>
+								<div class="col-sm-8">
+									<input type="email" name="lostEmail" class="form-control" placeholder="Adresse email du compte" required>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="sendMessage" class="btn btn-info">Envoyer <i class="glyphicon glyphicon-send"></i></button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

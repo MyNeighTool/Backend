@@ -132,12 +132,46 @@
 	    <script src="<%=jsFolder%>init.js"></script>
 	    <% if(nbNewMessage > 0) { %>
 	    <script type="text/javascript">
-			var hide = $.cookie('hideNewMessageModal');
-			if(!hide || hide!="true")
-				$('#messageReceivedModal').modal('show');
+			$(function() {
+	    		var hide = $.cookie('hideNewMessageModal');
+				if(!hide || hide!="true")
+					$('#messageReceivedModal').modal('show');
+			});
 	    </script>
 	    <% } %>
-	
+	    <% if(myUser.isPremiereVisiste()) { 
+	    		/* myUser.setPremiereVisiste(false);
+	    		Utilisateur utilisateurGet2 = new Utilisateur();
+	    		try {
+	    			final Marshaller marshaller = jaxbc.createMarshaller();
+	    			marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+	    			final java.io.StringWriter sw = new StringWriter();
+	    			marshaller.marshal(myUser, sw);			
+	    				
+	    			final ClientRequest clientRequest2 = new ClientRequest(siteUrl + "rest/user/update/");
+	    			clientRequest2.body("application/xml", myUser );
+	    					
+	    			String username = myUser.getConnexion().getLogin();
+	    			String password = myUser.getConnexion().getPassword();
+	    			String base64encodedUsernameAndPassword = DatatypeConverter.printBase64Binary((username + ":" + password).getBytes());
+	    			clientRequest2.header("Authorization", "Basic " +base64encodedUsernameAndPassword );
+	    			
+	    			final ClientResponse<String> clientResponse2 = clientRequest2.post(String.class);
+	    			
+	    			if (clientResponse2.getStatus() == 200) {
+	    				final Unmarshaller un = jaxbc.createUnmarshaller();
+	    				utilisateurGet2 = (Utilisateur) un.unmarshal(new StringReader(clientResponse2.getEntity()));
+	    			}
+	    		} catch (final Exception e) {
+	    			out.clear();
+	    		} */
+	    %>
+	    <script type="text/javascript">
+			$(function() {
+	    		$('#tourModal').modal('show');
+			});
+	    </script>
+	    <% } %>
 	    <!-- Just for debugging purposes. Don't actually copy this line! -->
 	    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -231,5 +265,6 @@
 		<jsp:include page="<%=contentFolder+"terms.jsp"%>" />
 		<jsp:include page="<%=contentFolder+"contact.jsp"%>" />
 		<jsp:include page="<%=contentFolder+"faq.jsp"%>" />
+		<jsp:include page="<%=contentFolder+"tour.jsp"%>" />
 	</body>
 </html>

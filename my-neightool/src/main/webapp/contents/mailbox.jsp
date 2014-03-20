@@ -396,8 +396,8 @@ if(request.getParameter("userId") != null) {
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="idAnswer" id="idAnswer" value="" />
+					<button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-send"></i> Envoyer</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					<button type="submit" class="btn btn-info">Envoyer</button>
 					<input type="hidden" name="posted" id="posted">
 				</div>
 			</form>
