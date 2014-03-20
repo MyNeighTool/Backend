@@ -20,8 +20,6 @@
 <%
 String username, email, firstname, lastname, address, telephone, avatar;
 int age;
-/** TODO **/
-/* Récupérer les vraies infos */
 JAXBContext jaxbc=JAXBContext.newInstance(Utilisateur.class);
 
 

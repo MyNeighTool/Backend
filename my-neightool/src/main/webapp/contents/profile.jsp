@@ -202,9 +202,9 @@ if(request.getParameter("userId") != null) {
 								<table class="table table-hover">
 									<thead>
 										<tr>
-											<th style="text-align: center;" width="25%">Nom</th>
-											<th style="text-align: center;" width="15%">Caution</th>
-											<th style="text-align: center;" width="20%">Disponible ?</th>
+											<th style="text-align: center;" width="50%">Nom</th>
+											<th style="text-align: center;" width="25%">Caution</th>
+											<th style="text-align: center;" width="20%">Disponibilité</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -212,7 +212,7 @@ if(request.getParameter("userId") != null) {
 										<tr style="vertical-align: middle;" class="toPaginate">
 											<td style="vertical-align: middle; text-align: center;"><strong>
 												<a href="dashboard.jsp?page=itemDetails&id=<%=t.getId()%>"><%=t.getNom() %></a></strong><br />
-											<td style="vertical-align: middle; text-align: center;"><%=t.getCaution() + " " %><i class="glyphicon glyphicon-euro"></i></td>
+											<td style="vertical-align: middle; text-align: center;"><%=t.getCaution() + " " %> euros</td>
 											<% if (t.isDisponible()) { %>
 												<td style="vertical-align: middle; text-align: center;"><i class="glyphicon glyphicon-ok"></i></td>
 											<% } else { %>

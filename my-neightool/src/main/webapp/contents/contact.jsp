@@ -15,14 +15,18 @@ $(function() {
 		}
 		if(ok) {
 			e.preventDefault();
+	    	$("#sendWait").hide();
+	    	$("#sendProgress").show();
+	    	$("#sendMessage").hide();
+	    	$("#closeBtn").hide();
 			$.ajax({
 			    url: "<%=pluginFolder%>contactScript.jsp",
 			    type: 'POST',
-			    data: {subjectTo: $("#subjectOfMessage").val(), messageTo: $("#bodyOfMessage").val()},
+			    data: {subjectTo: $("#subjectOfMessage").val(), messageTo: $("#bodyOfMessage").val(), reason: $("#reason").val(), link: $("#linkTo").val()},
 			    success: function(data){
-			    	$("#sendWait").hide();
+			    	$("#sendProgress").hide();
 			    	$("#sendSuccess").show();
-			    	$("#sendMessage").hide();
+			    	$("#closeBtn").show();
 			    }
 			});
 		}
@@ -40,6 +44,11 @@ $(function() {
 				<div id="sendSuccess" class="modal-body" style="display:none">
 					<div class="alert alert-success perfectCenter">Message envoyé avec succès !</div>
 				</div>
+				<div id="sendProgress" class="modal-body" style="display:none">
+					<div class="perfectCenter">
+						<a href="#" class="btn btn-default disabled">Message en cours d'envoi. Merci de patienter...</a>
+					</div>
+				</div>
 				<div id="sendWait" class="modal-body">
 					<p id="pMsg">Un problème sur le site ? Une remarque ? N'hésitez pas à nous contacter !</p><br />
 					<div class="form-group">
@@ -52,6 +61,7 @@ $(function() {
 						<label for="subjectTo" class="col-sm-3 control-label">Raison</label>
 						<div class="col-sm-9">
 							<select class="form-control" id="reason" name="reason">
+								<option value="-1" selected="selected">Sélectionnez une raison</option>
 								<option value="0">Nom de l'objet incorrect</option>
 								<option value="1">Description de l'objet incorrecte</option>
 								<option value="2">Photo de l'objet incorrect</option>
@@ -59,6 +69,7 @@ $(function() {
 								<option value="4">Objet ne respectant pas les conditions d'utilisation</option>
 							</select>
 						</div>
+						<input type="hidden" id="linkTo" value="" />
 					</div>
 					<div class="form-group">
 						<label for="messageTo" class="col-sm-3 control-label">Message</label>
@@ -69,7 +80,7 @@ $(function() {
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="sendMessage" class="btn btn-info"><i class="glyphicon glyphicon-send"></i> Envoyer</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+					<button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">Fermer</button>
 				</div>
 			</form>
 		</div>

@@ -188,34 +188,6 @@ if(request.getParameter("id") != null) {
 				String password2 = user.getConnexion().getPassword();
 				String base64encodedUsernameAndPassword = DatatypeConverter.printBase64Binary((username2 + ":" + password2).getBytes());
 				clientRequestEmprunt.header("Authorization", "Basic " +base64encodedUsernameAndPassword );
-				///////////////////
-				
-				
-				// On rend l'outil indisponible désormais
-/* 				outil.setDisponible(false);
-				
-				try {
-					final ClientRequest requestToolUpdate = new ClientRequest(siteUrl + "rest/tool/update");
-
-					//ici il faut sérialiser l'outil
-					final Marshaller marshaller2 = jaxbc.createMarshaller();
-					marshaller2.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-					final java.io.StringWriter sw2 = new StringWriter();
-					marshaller2.marshal(outil, sw2);
-
-					requestToolUpdate.body("application/xml", outil);
-					final ClientResponse<String> responseToolUpdate = requestToolUpdate.post(String.class);
-				
-					if (responseToolUpdate.getStatus() == 200) { // OK
-						final Unmarshaller un = jaxbc.createUnmarshaller();
-						final StringReader sr = new StringReader(responseToolUpdate.getEntity());
-						final Object object = (Object) un.unmarshal(sr);
-						toolUpdated = (Outil) object;
-					}
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-				} */
 			}
 		
 			//ici on va récuperer la réponse de la requete
@@ -274,6 +246,7 @@ if(request.getParameter("id") != null) {
 
 <%
 	if(itemFound) {
+		String currentUrl = request.getRequestURL()+"?page=itemDetails&id="+request.getParameter("id");
 %>
 
 <script src="<%=jsFolder%>bootstrap-datepicker.js" charset="UTF-8"></script>
@@ -286,6 +259,7 @@ if(request.getParameter("id") != null) {
 			$('#subjectOfMessage').prop('readonly', true);
 			$('#reasonDiv').show();
 			$('#contactModalLabel').html("Signaler un objet");
+			$('#linkTo').val("<%=currentUrl%>");
 			$('#pMsg').html("Merci de remplir correctement les champs afin que nous prenions en compte le signalement.");
 		})
 
@@ -294,6 +268,8 @@ if(request.getParameter("id") != null) {
 			$('#subjectOfMessage').prop('readonly', false);
 			$('#reasonDiv').hide();
 			$('#contactModalLabel').html("Nous contacter");
+			$('#reason').val("-1");
+			$('#linkTo').val("");
 			$('#pMsg').html("Un problème sur le site ? Une remarque ? N'hésitez pas à nous contacter !");
 		})
 		
