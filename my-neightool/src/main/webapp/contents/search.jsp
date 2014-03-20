@@ -406,6 +406,10 @@ if(request.getParameter("category") != null) {
 				var activateDistance = false;
 				var activateCaution = false;
 				$(function() {
+					$("a[href='#map']").on('shown.bs.tab', function(){
+						google.maps.event.trigger(map, 'resize');
+					});
+					
 					$("#enableDistance").click(function() {
 						if($("#enableDistance").is(':checked')) {
 							$("#amountDistance").html($("#sliderDistance").slider("value") + " km maximum");
@@ -566,7 +570,7 @@ if(request.getParameter("category") != null) {
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#list" data-toggle="tab"><i
 				class="glyphicon glyphicon-th-list"></i> Liste des objets</a></li>
-		<li><a href="#map" data-toggle="tab" onclick="google.maps.event.trigger(map,'resize')"><i
+		<li><a href="#map" data-toggle="tab" id="mapTab"><i
 				class="glyphicon glyphicon-map-marker"></i> Carte</a></li>
 	</ul>
 	<br />
