@@ -448,7 +448,7 @@ if(request.getParameter("category") != null) {
 						range: "min",
 						value: <%=cMax%>,
 						min: 1,
-						max: 500,
+						max: 999,
 						slide: function(event, ui) {
 							$("#amountCaution").html(ui.value + "€");
 							$("#cMax").val(ui.value);
