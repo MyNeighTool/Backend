@@ -396,7 +396,7 @@ if (displayMessage) {
 		</style>
 		<table width="100%">
 			<tr>
-				<td class="tableTmp" width="30%">Vendeur :</td>
+				<td class="tableTmp" width="30%">Prêteur :</td>
 				<td width="70%"><a href="#" data-toggle="modal"
 					data-target="#userProfile"><%=itemVendor%></a></td>
 			</tr>

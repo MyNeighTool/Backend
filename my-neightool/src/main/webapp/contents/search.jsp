@@ -99,14 +99,11 @@ try {
 		responseCategories.getEntity()));
 		if(categoriesDto.size()>0)
 		{
-	list=true;
-	System.out.println("LISTE TRUE");
+			list=true;
 		}
 		else
 		{
-	list=false;	
-	System.out.println("LISTE FALSE");
-	
+			list=false;
 		}
 		
 		messageValue = "La liste a bien été récupérée";
@@ -254,12 +251,8 @@ if(request.getParameter("category") != null) {
 					Outil o = it.next();
 					if (o.getCaution() > cMax)
 					{
-						System.out.println("CAUTION TROP CHER ! ");
 						it.remove();
 					}
-					
-					else
-						System.out.println("CAUTION ACCEPTABLE ! " + request.getParameter("cMax") + " " + o.getCaution());
 				}
 			}
 			
@@ -273,12 +266,8 @@ if(request.getParameter("category") != null) {
 					Outil o = it.next();
 					if (o.getCaution() > cMax)
 					{
-						System.out.println("CAUTION TROP CHER ! ");
 						it.remove();
 					}
-					
-					else
-						System.out.println("CAUTION ACCEPTABLE ! " + request.getParameter("cMax") + " " + o.getCaution());
 				}
 			}
 		}
@@ -310,12 +299,7 @@ if(request.getParameter("category") != null) {
 					double distance = distFrom(currentUserLat, currentUserLng, userLat, userLng);
 					if(distance>dMax)
 					{
-						System.out.println("TROP LOIN !");
 						it.remove();
-					}
-					else
-					{
-						System.out.println("PAS TROP LOIN !");
 					}
 				}
 			}
@@ -330,18 +314,10 @@ if(request.getParameter("category") != null) {
 				double distance = distFrom(currentUserLat, currentUserLng, userLat, userLng);
 				if(distance>dMax)
 				{
-					System.out.println("TROP LOIN !");
 					it.remove();
 				}
-				else
-				{
-					System.out.println("PAS TROP LOIN !");
-				}
 			}
-		}
-		
-		
-		
+		}		
 	}
 	
 	
@@ -361,12 +337,8 @@ if(request.getParameter("category") != null) {
 				Outil o = it.next();
 				if (!like(o.getNom(),keywords))
 				{
-					System.out.println("CEST PAS LE MEME NOM ! ");
 					it.remove();
 				}
-				
-				else
-					System.out.println("CEST LE MEME NOM ! " + request.getParameter("s") + " " + o.getNom());
 			}
 			arrayListeOutilsCat.add(listeAllTools);
 		}
@@ -380,12 +352,8 @@ if(request.getParameter("category") != null) {
 					Outil o = it.next();
 					if (!like(o.getNom(),keywords))
 					{
-						System.out.println("CEST PAS LE MEME NOM ! ");
 						it.remove();
 					}
-					
-					else
-						System.out.println("CEST LE MEME NOM ! " + request.getParameter("s") + " " + o.getNom());
 				}
 			}
 		}
