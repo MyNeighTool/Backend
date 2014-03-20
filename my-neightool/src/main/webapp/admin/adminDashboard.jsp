@@ -1,5 +1,5 @@
 <style>
-.glyphi-lg {font-size: 3em;}
+.glyphi-lg {font-size: 64px;}
 </style>
 
 <div class="col-md-3 perfectCenter">
@@ -11,7 +11,7 @@
 </div>
 <div class="col-md-3 perfectCenter">
 	<div class="well">
-		<a href="adminDashboard.jsp?page=adminManageItems"><span class="glyphicon glyphicon-cutlery glyphi-lg"></span>
+		<a href="adminDashboard.jsp?page=adminManageItems"><span class="glyphicon glyphicon-wrench glyphi-lg"></span>
 		<br /><br />
 		Gérer les outils</a>
 	</div>

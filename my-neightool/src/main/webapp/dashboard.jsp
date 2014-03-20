@@ -140,7 +140,7 @@
 	    </script>
 	    <% } %>
 	    <% if(myUser.isPremiereVisiste()) { 
-	    		/* myUser.setPremiereVisiste(false);
+	    		myUser.setPremiereVisiste(false);
 	    		Utilisateur utilisateurGet2 = new Utilisateur();
 	    		try {
 	    			final Marshaller marshaller = jaxbc.createMarshaller();
@@ -163,8 +163,7 @@
 	    				utilisateurGet2 = (Utilisateur) un.unmarshal(new StringReader(clientResponse2.getEntity()));
 	    			}
 	    		} catch (final Exception e) {
-	    			out.clear();
-	    		} */
+	    		}
 	    %>
 	    <script type="text/javascript">
 			$(function() {
@@ -235,7 +234,7 @@
 		<div class="container">
 			<hr />
 			<footer>
-				<p>Copyrights &copy; MyNeighTool 2014 | <span><a href="#" id="contactLink" data-toggle="modal" data-target="#contact">Nous contacter</a> &bull; <a href="#" data-toggle="modal" data-target="#terms">Conditions générales d'utilisation</a> &bull; <a href="#" data-toggle="modal" data-target="#faq">FAQ</a> 
+				<p>Copyrights &copy; MyNeighTool 2014 | <span><a href="#" id="contactLink" data-toggle="modal" data-target="#contact">Nous contacter</a> &bull; <a href="#" data-toggle="modal" data-target="#terms">Conditions générales d'utilisation</a> &bull; <a href="#" data-toggle="modal" data-target="#faq">FAQ</a> &bull; <a href="#" data-toggle="modal" data-target="#tourModal">Manuel utilisateur</a> 
 				<% 
 								
 				Utilisateur utilisateurGet = new Utilisateur();
