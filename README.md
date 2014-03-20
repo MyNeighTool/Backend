@@ -1,8 +1,8 @@
 
-
 - Base de données:
 
 > Choisir une bonne de données MySQL
+
 > Créer un nom de base de données dans celle-ci
 
 
@@ -13,7 +13,9 @@
 - Configurer le fichier pom.xml: utilisation d'un "profile":
 
 > Choisir un "profile" ou créer un nouveau "profile"
+
 > Renseigner le chemin et le nom de la base de données entre les chevrons du champ <jdbc.url></jdbc.url>
+
 > Renseigner le login et password d'accès à la base de données 
 
 
@@ -39,4 +41,5 @@
 - Executer les tests unitaires depuis Eclipse:
 
 > Click droit sur le projet > Run As > JUnit Test
+
 (attention, les tests unitaires ne fonctionnement pas si ils sont lançés avec Maven
