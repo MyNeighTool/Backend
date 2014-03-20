@@ -33,10 +33,18 @@ public class ServiceUtilisateur {
 	@Context
 	private SecurityContext security;
 
+	/**
+	 * Classe répertoriant les services en relation avec les utilisateurs
+	 */
 	public ServiceUtilisateur() {
 
 	}
 
+	/**
+	 * Créer un utilisateur
+	 * @param u
+	 * @return
+	 */
 	@PermitAll
 	@POST
 	@Path("/create")
@@ -52,6 +60,11 @@ public class ServiceUtilisateur {
 		return Response.ok(u).build();
 	}
 
+	/**
+	 * Mettre à jour un utilisateur
+	 * @param u
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/update")
@@ -61,6 +74,10 @@ public class ServiceUtilisateur {
 		return Response.ok(u).build();
 	}
 	
+	/**
+	 * Supprimer un utilisateur
+	 * @param id
+	 */
 	@RolesAllowed("ADMIN")
 	@GET
 	@Path("/delete/{id}")
@@ -70,6 +87,11 @@ public class ServiceUtilisateur {
 		utilisateurDAO.deleteUtilisateur(utilisateur);
 	}
 
+	/**
+	 * Obtenir un utilisateur par son ID
+	 * @param id
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/{id}")
@@ -79,6 +101,11 @@ public class ServiceUtilisateur {
 		return a;
 	}
 	
+	/**
+	 * Obtenir un utilisateur par son LOGIN
+	 * @param login
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/login/{login}")
@@ -88,6 +115,11 @@ public class ServiceUtilisateur {
 		return a;
 	}
 	
+	/**
+	 * Obtenir un utilisateur par son EMAIL
+	 * @param email
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/email/{email}")
@@ -97,6 +129,10 @@ public class ServiceUtilisateur {
 		return a;
 	}
 
+	/**
+	 * Obtenir la liste des utilisateurs par ordre descendant
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/list")
@@ -113,6 +149,10 @@ public class ServiceUtilisateur {
 
 	}
 	
+	/**
+	 * Obtenir la liste des utilisateurs par ordre ascendant
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/listAsc")

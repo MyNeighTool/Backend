@@ -23,10 +23,18 @@ public class ServiceConnexion {
 
 	private static ItfConnexionDAO connexionDAOImpl = new ConnexionDAOImpl();
 
+	/**
+	 * Classe répertoriant les services en relation avec les connexions
+	 */
 	public ServiceConnexion() {
 
 	}
 
+	/**
+	 * Service retournant une connection valide ou non
+	 * @param connexion
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/try")

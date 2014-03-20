@@ -19,7 +19,6 @@ import com.ped.myneightool.dto.CategoriesDTO;
 import com.ped.myneightool.model.Categorie;
 
 
-
 @Path("/categorie")
 public class ServiceCategorie {
 
@@ -28,10 +27,18 @@ public class ServiceCategorie {
 	
 	private static ItfCategorieDAO categorieDAO = new CategorieDAOImpl();
 
+	/**
+	 * Classe répertoriant les services en relation avec les catégories
+	 */
 	public ServiceCategorie() {
 
 	}
 
+	/**
+	 * Créer une catégorie
+	 * @param c
+	 * @return
+	 */
 	@RolesAllowed("ADMIN")
 	@POST
 	@Path("/create")
@@ -47,6 +54,10 @@ public class ServiceCategorie {
 		return Response.ok(c).build();
 	}
 	
+	/**
+	 * Supprimer une catégorie
+	 * @param id
+	 */
 	@RolesAllowed("ADMIN")
 	@GET
 	@Path("/delete/{id}")
@@ -55,6 +66,11 @@ public class ServiceCategorie {
 		categorieDAO.deleteCategorie(categorie);
 	}
 	
+	/**
+	 * Mettre à jour une catégorie
+	 * @param c
+	 * @return
+	 */
 	@RolesAllowed("ADMIN")
 	@POST
 	@Path("/update")
@@ -64,6 +80,11 @@ public class ServiceCategorie {
 		return Response.ok(c).build();
 	}
 
+	/**
+	 * Obtenir une catégorie par son ID
+	 * @param id
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/{id}")
@@ -73,6 +94,11 @@ public class ServiceCategorie {
 		return c;
 	}
 	
+	/**
+	 * Obtenir une catégorie par son NOM
+	 * @param name
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/name/{name}")
@@ -82,6 +108,10 @@ public class ServiceCategorie {
 		return c;
 	}
 	
+	/**
+	 * Obtenir la liste de toutes les catégories
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/list")
@@ -99,6 +129,10 @@ public class ServiceCategorie {
 
 	}
 	
+	/**
+	 * Obtenir la liste des catégories par ordre ascendant
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/listAsc")

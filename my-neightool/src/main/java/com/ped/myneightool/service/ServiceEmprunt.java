@@ -28,10 +28,18 @@ public class ServiceEmprunt {
 	
 	private static ItfEmpruntDAO empruntDAO = new EmpruntDAOImpl();
 
+	/**
+	 * Classe répertoriant les services en relation avec les emprunts
+	 */
 	public ServiceEmprunt() {
 
 	}
 
+	/**
+	 * Créer un emprunt
+	 * @param u
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/create")
@@ -47,6 +55,11 @@ public class ServiceEmprunt {
 		return Response.ok(u).build();
 	}
 
+	/**
+	 * Mettre à jour un emprunt
+	 * @param u
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/update")
@@ -57,6 +70,10 @@ public class ServiceEmprunt {
 	}
 	
 	
+	/**
+	 * Supprimer un emprunt
+	 * @param id
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/delete/{id}")
@@ -65,6 +82,11 @@ public class ServiceEmprunt {
 		empruntDAO.deleteEmprunt(emprunt);
 	}
 
+	/**
+	 * Obtenir un emprunt
+	 * @param id
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/{id}")
@@ -74,11 +96,15 @@ public class ServiceEmprunt {
 		return a;
 	}
 	
+	/**
+	 * Obtenir la liste de tous les emprunts
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/list")
 	@Produces("application/xml")
-	public EmpruntsDTO getAllUtilisateurs() {
+	public EmpruntsDTO getAllEmprunts() {
 		EmpruntsDTO emprunts = new EmpruntsDTO();
 		try {
 			emprunts = empruntDAO.findAll();
@@ -90,11 +116,16 @@ public class ServiceEmprunt {
 
 	}
 	
+	/**
+	 * Obtenir la liste des emprunts par ID d'utilisateur
+	 * @param emprunteurId
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/user/{id}")
 	@Produces({ "application/xml", "application/json" })
-	public EmpruntsDTO findToolsOfUser(@PathParam("id") final int emprunteurId) {
+	public EmpruntsDTO findEmpruntsOfUser(@PathParam("id") final int emprunteurId) {
 		EmpruntsDTO emprunts = empruntDAO.findEmpruntsOfUser(emprunteurId);
 		return emprunts;
 	}

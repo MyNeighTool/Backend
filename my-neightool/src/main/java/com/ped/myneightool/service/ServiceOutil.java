@@ -28,11 +28,19 @@ public class ServiceOutil {
 	
 	private static ItfOutilDAO outilDAO = new OutilDAOImpl();
 
+	/**
+	 * Classe répertoriant les services en relation avec les outils	
+	 */
 	public ServiceOutil() {
 
 	}
 
 	
+	/**
+	 * Créer un outil
+	 * @param o
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/create")
@@ -48,6 +56,11 @@ public class ServiceOutil {
 		return Response.ok(o).build();
 	}
 
+	/**
+	 * Mettre à jour un outil
+	 * @param o
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/update")
@@ -57,6 +70,10 @@ public class ServiceOutil {
 		return Response.ok(o).build();
 	}
 	
+	/**
+	 * Supprimer un outil
+	 * @param id
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/delete/{id}")
@@ -65,6 +82,11 @@ public class ServiceOutil {
 		outilDAO.deleteOutil(o);
 	}
 
+	/**
+	 * Obtenir un outil
+	 * @param id
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/{id}")
@@ -74,6 +96,10 @@ public class ServiceOutil {
 		return o;
 	}
 
+	/**
+	 * Obtenir la liste de tous les outils
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/list")
@@ -90,6 +116,10 @@ public class ServiceOutil {
 
 	}
 	
+	/**
+	 * Obtenir la liste de tous les outils par ordre ascendant
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/listAsc")
@@ -106,6 +136,10 @@ public class ServiceOutil {
 
 	}
 	
+	/**
+	 * Obtenir la liste de tous les outils disponibles
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/list/available")
@@ -122,6 +156,11 @@ public class ServiceOutil {
 
 	}
 	
+	/**
+	 * Obtenir la liste des outils d'un utilisateur par son ID
+	 * @param UtilisateurId
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/user/{id}")
@@ -131,6 +170,11 @@ public class ServiceOutil {
 		return outils;
 	}
 	
+	/**
+	 * Obtenir la liste des outils disponibles d'un utilisateur par son ID
+	 * @param UtilisateurId
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/user/available/{id}")
@@ -140,6 +184,11 @@ public class ServiceOutil {
 		return outils;
 	}
 	
+	/**
+	 * Obtenir une liste d'outil avec une recherche par critères
+	 * @param o
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/criteria")
@@ -149,6 +198,11 @@ public class ServiceOutil {
 		return outils;
 	}
 	
+	/**
+	 * Obtenir une liste d'outil d'une catégorie spécifique par son ID
+	 * @param CategorieId
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/categorie/{idCategorie}")
@@ -158,6 +212,11 @@ public class ServiceOutil {
 		return outils;
 	}
 	
+	/**
+	 * Obtenir une liste d'outil disponible d'une catégorie spécifique par son ID
+	 * @param CategorieId
+	 * @return
+	 */
 	@PermitAll
 	@GET
 	@Path("/categorie/available/{idCategorie}")

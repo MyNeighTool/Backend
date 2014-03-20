@@ -27,10 +27,18 @@ public class ServiceMessage {
 	
 	private static ItfMessageDAO messageDAO = new MessageDAOImpl();
 
+	/**
+	 * Classe répertoriant les services en relation avec les messages
+	 */
 	public ServiceMessage() {
 
 	}
 
+	/**
+	 * Créer un message
+	 * @param u
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/create")
@@ -46,6 +54,11 @@ public class ServiceMessage {
 		return Response.ok(u).build();
 	}
 
+	/**
+	 * Mettre à jour un message
+	 * @param u
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@POST
 	@Path("/update")
@@ -55,6 +68,10 @@ public class ServiceMessage {
 		return Response.ok(u).build();
 	}
 	
+	/**
+	 * Supprimer un message
+	 * @param id
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/delete/{id}")
@@ -63,6 +80,11 @@ public class ServiceMessage {
 		messageDAO.deleteMessage(Message);
 	}
 
+	/**
+	 * Obtenir un message
+	 * @param id
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/{id}")
@@ -72,6 +94,11 @@ public class ServiceMessage {
 		return a;
 	}
 	
+	/**
+	 * Obtenir le hashset des messages envoyés par ID d'utilisateur (ancienne version)
+	 * @param UtilisateurId
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/list/send/{id}")
@@ -81,6 +108,11 @@ public class ServiceMessage {
 		return messages;
 	}
 	
+	/**
+	 * Obtenir la liste des messages envoyés par ID d'utilisateur
+	 * @param UtilisateurId
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/list/sendListByOrder/{id}")
@@ -90,6 +122,11 @@ public class ServiceMessage {
 		return messages;
 	}
 	
+	/**
+	 * Obtenir la liste des messages reçus par ID d'utilisateur (ancienne version)
+	 * @param UtilisateurId
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/list/receive/{id}")
@@ -99,6 +136,11 @@ public class ServiceMessage {
 		return messages;
 	}
 	
+	/**
+	 * Obtenir la liste des messages reçus par ID d'utilisateur
+	 * @param UtilisateurId
+	 * @return
+	 */
 	@RolesAllowed({"USER","ADMIN"})
 	@GET
 	@Path("/list/receiveListByOrder/{id}")
