@@ -157,9 +157,9 @@ if(request.getParameter("oldPassword") != null) {
 		
 		if (clientResponse2.getStatus() == 200) { // ok !
 				
-	final Unmarshaller un = jaxbc.createUnmarshaller();
-	utilisateurGet2 = (Utilisateur) un.unmarshal(new StringReader(clientResponse2.getEntity()));
-				
+			final Unmarshaller un = jaxbc.createUnmarshaller();
+			utilisateurGet2 = (Utilisateur) un.unmarshal(new StringReader(clientResponse2.getEntity()));
+					
 		}
 	} catch (final Exception e) {
 		e.printStackTrace();

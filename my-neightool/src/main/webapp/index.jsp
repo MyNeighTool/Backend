@@ -26,6 +26,9 @@
 <%@ page import="java.util.Iterator;"%>
 
 <%
+
+	
+
 	UtilisateursDTO usersDTO = new UtilisateursDTO();
 	try {
 		final JAXBContext jaxbc = JAXBContext
@@ -52,162 +55,162 @@
 	String messageValue = "";
 	if (request.getParameter("attemp") != null) {
 		if (request.getParameter("attemp").equals("0")) {
-			session.removeAttribute("ID");
-			session.removeAttribute("userName");
+	session.removeAttribute("ID");
+	session.removeAttribute("userName");
 		} else if (request.getParameter("attemp").equals("1")) {
-			actionValid = true;
-			if (request.getParameter("signIn") != null) {
-				System.out.println("CONNECTION EN COURS");
-				/*Contexte*/
-				JAXBContext jaxbc = JAXBContext
-				.newInstance(Connexion.class);
+	actionValid = true;
+	if (request.getParameter("signIn") != null) {
+		System.out.println("CONNECTION EN COURS");
+		/*Contexte*/
+		JAXBContext jaxbc = JAXBContext
+		.newInstance(Connexion.class);
 		
-				/*On créé une tentative de connexion avec les logins et mdp entrés*/
-				final Connexion connexion = new Connexion(escapeStr(request.getParameter("login_username")),encodedPw(escapeStr(request.getParameter("login_password"))));
-				/*On sérialise*/
-				final Marshaller marshaller = jaxbc.createMarshaller();
-				marshaller.setProperty(Marshaller.JAXB_ENCODING,"UTF-8");
-				final java.io.StringWriter sw = new StringWriter();
-				marshaller.marshal(connexion, sw);
+		/*On créé une tentative de connexion avec les logins et mdp entrés*/
+		final Connexion connexion = new Connexion(escapeStr(request.getParameter("login_username")),encodedPw(escapeStr(request.getParameter("login_password"))));
+		/*On sérialise*/
+		final Marshaller marshaller = jaxbc.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_ENCODING,"UTF-8");
+		final java.io.StringWriter sw = new StringWriter();
+		marshaller.marshal(connexion, sw);
 		
-				/*On envoie la requete au webservice*/
-				final ClientRequest clientRequest = new ClientRequest(siteUrl + "rest/connection/try");
-				clientRequest.body("application/xml", sw.toString());
+		/*On envoie la requete au webservice*/
+		final ClientRequest clientRequest = new ClientRequest(siteUrl + "rest/connection/try");
+		clientRequest.body("application/xml", sw.toString());
 		
-				//CREDENTIALS
-				String username = connexion.getLogin();
-				String password = connexion.getPassword();
-				String base64encodedUsernameAndPassword = DatatypeConverter.printBase64Binary((username + ":" + password).getBytes());
-				clientRequest.header("Authorization", "Basic " + base64encodedUsernameAndPassword);
-				///////////////////
+		//CREDENTIALS
+		String username = connexion.getLogin();
+		String password = connexion.getPassword();
+		String base64encodedUsernameAndPassword = DatatypeConverter.printBase64Binary((username + ":" + password).getBytes());
+		clientRequest.header("Authorization", "Basic " + base64encodedUsernameAndPassword);
+		///////////////////
 		
-				/*on récupère la réponse de la requete*/
-				final ClientResponse<String> clientResponse = clientRequest.post(String.class);
-				System.out.println("\n\n" + clientResponse.getEntity()+ "\n\n");
+		/*on récupère la réponse de la requete*/
+		final ClientResponse<String> clientResponse = clientRequest.post(String.class);
+		System.out.println("\n\n" + clientResponse.getEntity()+ "\n\n");
 		
-				if (clientResponse.getStatus() == 200) {
-					//Si on récupère un ID
-					try {
-						Integer.parseInt(clientResponse.getEntity());
-				
-						messageType = "success";
-						messageValue = "Connexion réussie";
-				
-						session.setAttribute("ID", clientResponse.getEntity());
-						session.setAttribute("userName",escapeStr(request.getParameter("login_username")));
-				
-						//Sinon c'est que les identifiants sont mauvais
-					} catch (NumberFormatException e) {
-						messageValue = "Echec de la connexion, login ou mot de passe incorrect";
-						messageType = "danger";
-					}
-				} else {
-					messageValue = "Problème de connexion, ressayez plus tard";
-					messageType = "danger";
-				}
-			} else if (request.getParameter("signUp") != null) {
+		if (clientResponse.getStatus() == 200) {
+			//Si on récupère un ID
+			try {
+				Integer.parseInt(clientResponse.getEntity());
 		
-				//on a besoin du contexte si on veut serialiser/désérialiser avec jaxb
-				JAXBContext jaxbc = JAXBContext
-				.newInstance(Utilisateur.class);
+				messageType = "success";
+				messageValue = "Connexion réussie";
 		
-				System.out.println("LAT : " + request.getParameter("lat"));
+				session.setAttribute("ID", clientResponse.getEntity());
+				session.setAttribute("userName",escapeStr(request.getParameter("login_username")));
 		
-				//ici on va créer l'utilisateur avec les données rentrés dans le formulaire
-				boolean correctPW = escapeStr(request.getParameter("password")).matches("[a-zA-Z0-9#$%+=]*");
-				//Formatage de la date
-				String m = escapeStr(request.getParameter("month"));
-				String day = escapeStr(request.getParameter("day"));
-				String y = escapeStr(request.getParameter("year"));
-		
-				String target = day + "-" + m + "-" + y;
-				DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-				Date d = df.parse(target);
-		
-				boolean dateCorrecte = false;
-				DateFormat sdf = new SimpleDateFormat("d-M-yyyy");
-				try {
-					String dateFormatee = sdf.format(d);
-					System.out.println("Date formatée : " + dateFormatee);
-					if (dateFormatee.compareTo(target) != 0)
-						dateCorrecte = false;
-					else
-						dateCorrecte = true;
-				} catch (Exception e) {
-					System.out.println("Exception");
-				}
-		
-				//Verification numéro de tel
-				String numTel = escapeStr(request.getParameter("telephone"));
-				boolean correctTel = numTel.matches("[0-9]{10}");
-				boolean correctLN = escapeStr(request.getParameter("lastname")).matches("[a-zA-Zéèï-]*");
-				boolean correctFN = escapeStr(request.getParameter("firstname")).matches("[a-zA-Zéèï-]*");
-		
-				if (correctTel && dateCorrecte && correctLN	&& correctFN && correctPW) {
-					final Adresse adresse = new Adresse(escapeStr(request.getParameter("location")),Float.valueOf(escapeStr(request.getParameter("long"))),Float.valueOf(escapeStr(request.getParameter("lat"))));
-					final Connexion connexion = new Connexion(escapeStr(request.getParameter("username")),encodedPw(escapeStr(request.getParameter("password"))));
-					final Utilisateur user = new Utilisateur(escapeStr(request.getParameter("lastname")), escapeStr(request.getParameter("firstname")),	connexion, escapeStr(request.getParameter("email")),numTel, adresse, d);
-
-					//ici il faut sérialiser l'utilisateur
-					final Marshaller marshaller = jaxbc.createMarshaller();
-					marshaller.setProperty(Marshaller.JAXB_ENCODING,"UTF-8");
-					final java.io.StringWriter sw = new StringWriter();
-					marshaller.marshal(user, sw);
-				
-					//ici on envois la requete au webservice createUtilisateur
-					final ClientRequest clientRequest = new ClientRequest(siteUrl + "rest/user/create");
-					clientRequest.body("application/xml", user);
-				
-					//ici on va récuperer la réponse de la requete
-					final ClientResponse<String> clientResponse = clientRequest.post(String.class);
-					//test affichage
-					System.out.println("\n\n" + clientResponse.getEntity() + "\n\n");
-					if (clientResponse.getStatus() == 200) {
-						// si la réponse est valide !
-						// on désérialiser la réponse si on veut vérifier que l'objet retourner
-						// est bien celui qu'on a voulu créer , pas obligatoire
-						final Unmarshaller un = jaxbc
-						.createUnmarshaller();
-						final Object object = (Object) un
-						.unmarshal(new StringReader(
-						clientResponse.getEntity()));
-						// et ici on peut vérifier que c'est bien le bonne objet
-				
-						//mail de rappel identifiants
-						 /* 
-						 new SendMailTLS(request.getParameter("email"),"Bonjour ! "
-						 + "\n \n Bienvenue "+ connexion.getLogin() +" sur le site MyNeighTool. Votre inscription est réussie et vous pouvez dés à présent vous connecter sur le site avec vos identifiants."
-						 + "\n \n Si vous avez besoin d'aide, n'hésitez pas à consulter la FAQ du site."
-						 + "\n \n Cordialement, l'équipe de MyNeighTool");
-						 System.out.println("Mail de confirmation envoyé");*/
-						 
-						messageValue = "Vous avez bien été enregistré";
-						messageType = "success";
-				
-					} else {
-						messageValue = "Une erreur est survenue";
-						messageType = "danger";
-					}
-				} else if (!correctTel) {
-					messageValue = "Numero de téléphone incorrect. Format : 10 chiffres";
-					messageType = "danger";
-				} else if (!dateCorrecte) {
-					messageValue = "La date de naissance est incorrecte";
-					messageType = "danger";
-				} else if (!correctFN) {
-					messageValue = "Prénom incorrect";
-					messageType = "danger";
-				} else if (!correctLN) {
-					messageValue = "Nom incorrect";
-					messageType = "danger";
-				} else if (!correctPW) {
-					messageValue = "Mot de passe incorrect. Caractères autorisés : chiffres, lettres (majuscules et minuscules), caractères spéciaux (uniquement : #, +, =, $, %)";
-					messageType = "danger";
-				}
-			} else {
+				//Sinon c'est que les identifiants sont mauvais
+			} catch (NumberFormatException e) {
+				messageValue = "Echec de la connexion, login ou mot de passe incorrect";
 				messageType = "danger";
-				messageValue = "Il semble y avoir une erreur lors de votre connexion/inscription.";
 			}
+		} else {
+			messageValue = "Problème de connexion, ressayez plus tard";
+			messageType = "danger";
+		}
+	} else if (request.getParameter("signUp") != null) {
+		
+		//on a besoin du contexte si on veut serialiser/désérialiser avec jaxb
+		JAXBContext jaxbc = JAXBContext
+		.newInstance(Utilisateur.class);
+		
+		System.out.println("LAT : " + request.getParameter("lat"));
+		
+		//ici on va créer l'utilisateur avec les données rentrés dans le formulaire
+		boolean correctPW = escapeStr(request.getParameter("password")).matches("[a-zA-Z0-9#$%+=]*");
+		//Formatage de la date
+		String m = escapeStr(request.getParameter("month"));
+		String day = escapeStr(request.getParameter("day"));
+		String y = escapeStr(request.getParameter("year"));
+		
+		String target = day + "-" + m + "-" + y;
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		Date d = df.parse(target);
+		
+		boolean dateCorrecte = false;
+		DateFormat sdf = new SimpleDateFormat("d-M-yyyy");
+		try {
+			String dateFormatee = sdf.format(d);
+			System.out.println("Date formatée : " + dateFormatee);
+			if (dateFormatee.compareTo(target) != 0)
+				dateCorrecte = false;
+			else
+				dateCorrecte = true;
+		} catch (Exception e) {
+			System.out.println("Exception");
+		}
+		
+		//Verification numéro de tel
+		String numTel = escapeStr(request.getParameter("telephone"));
+		boolean correctTel = numTel.matches("[0-9]{10}");
+		boolean correctLN = escapeStr(request.getParameter("lastname")).matches("[a-zA-Zéèï-]*");
+		boolean correctFN = escapeStr(request.getParameter("firstname")).matches("[a-zA-Zéèï-]*");
+		
+		if (correctTel && dateCorrecte && correctLN	&& correctFN && correctPW) {
+			final Adresse adresse = new Adresse(escapeStr(request.getParameter("location")),Float.valueOf(escapeStr(request.getParameter("long"))),Float.valueOf(escapeStr(request.getParameter("lat"))));
+			final Connexion connexion = new Connexion(escapeStr(request.getParameter("username")),encodedPw(escapeStr(request.getParameter("password"))));
+			final Utilisateur user = new Utilisateur(escapeStr(request.getParameter("lastname")), escapeStr(request.getParameter("firstname")),	connexion, escapeStr(request.getParameter("email")),numTel, adresse, d);
+
+			//ici il faut sérialiser l'utilisateur
+			final Marshaller marshaller = jaxbc.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_ENCODING,"UTF-8");
+			final java.io.StringWriter sw = new StringWriter();
+			marshaller.marshal(user, sw);
+		
+			//ici on envois la requete au webservice createUtilisateur
+			final ClientRequest clientRequest = new ClientRequest(siteUrl + "rest/user/create");
+			clientRequest.body("application/xml", user);
+		
+			//ici on va récuperer la réponse de la requete
+			final ClientResponse<String> clientResponse = clientRequest.post(String.class);
+			//test affichage
+			System.out.println("\n\n" + clientResponse.getEntity() + "\n\n");
+			if (clientResponse.getStatus() == 200) {
+				// si la réponse est valide !
+				// on désérialiser la réponse si on veut vérifier que l'objet retourner
+				// est bien celui qu'on a voulu créer , pas obligatoire
+				final Unmarshaller un = jaxbc
+				.createUnmarshaller();
+				final Object object = (Object) un
+				.unmarshal(new StringReader(
+				clientResponse.getEntity()));
+				// et ici on peut vérifier que c'est bien le bonne objet
+		
+				//mail de rappel identifiants
+				 /* 
+				 new SendMailTLS(request.getParameter("email"),"Bonjour ! "
+				 + "\n \n Bienvenue "+ connexion.getLogin() +" sur le site MyNeighTool. Votre inscription est réussie et vous pouvez dés à présent vous connecter sur le site avec vos identifiants."
+				 + "\n \n Si vous avez besoin d'aide, n'hésitez pas à consulter la FAQ du site."
+				 + "\n \n Cordialement, l'équipe de MyNeighTool");
+				 System.out.println("Mail de confirmation envoyé");*/
+				 
+				messageValue = "Vous avez bien été enregistré";
+				messageType = "success";
+		
+			} else {
+				messageValue = "Une erreur est survenue";
+				messageType = "danger";
+			}
+		} else if (!correctTel) {
+			messageValue = "Numero de téléphone incorrect. Format : 10 chiffres";
+			messageType = "danger";
+		} else if (!dateCorrecte) {
+			messageValue = "La date de naissance est incorrecte";
+			messageType = "danger";
+		} else if (!correctFN) {
+			messageValue = "Prénom incorrect";
+			messageType = "danger";
+		} else if (!correctLN) {
+			messageValue = "Nom incorrect";
+			messageType = "danger";
+		} else if (!correctPW) {
+			messageValue = "Mot de passe incorrect. Caractères autorisés : chiffres, lettres (majuscules et minuscules), caractères spéciaux (uniquement : #, +, =, $, %)";
+			messageType = "danger";
+		}
+	} else {
+		messageType = "danger";
+		messageValue = "Il semble y avoir une erreur lors de votre connexion/inscription.";
+	}
 		}
 	}
 
@@ -217,6 +220,96 @@
 		.getRequestDispatcher("dashboard.jsp?idCat=0");
 		rd.forward(request, response);
 	}
+%>
+	
+<%
+	
+	if(request.getParameter("lostUsername")!=null && request.getParameter("lostEmail")!=null){
+		
+		JAXBContext jaxbc2 = JAXBContext.newInstance(Utilisateur.class);
+		
+		String newPass=gen(8);
+		String login = request.getParameter("lostUsername");
+		String mail = request.getParameter("lostEmail");
+		
+		
+		Utilisateur utilisateurGet = new Utilisateur();
+		
+		try {
+			ClientRequest clientRequest;
+			clientRequest = new ClientRequest(siteUrl + "rest/user/login/"+login);
+			clientRequest.accept("application/xml");
+			ClientResponse<String> clientResponse = clientRequest
+					.get(String.class);
+			if (clientResponse.getStatus() == 200) {
+				Unmarshaller un = jaxbc2.createUnmarshaller();
+				utilisateurGet = (Utilisateur) un
+						.unmarshal(new StringReader(clientResponse
+								.getEntity()));
+
+			}else{
+				messageType= "danger";
+				messageValue="L'utilisateur que vous avez rentré n'existe pas.";
+				actionValid = true;		
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(mail.equals(utilisateurGet.getMail())){
+			String currentLog= utilisateurGet.getConnexion().getLogin();
+			String currentPass= utilisateurGet.getConnexion().getPassword();
+			
+			utilisateurGet.getConnexion().setPassword(encodedPw(newPass));
+			
+			try {
+				
+				// marshalling/serialisation pour l'envoyer avec une requete post
+				final Marshaller marshaller = jaxbc2.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+				final java.io.StringWriter sw = new StringWriter();
+				marshaller.marshal(utilisateurGet, sw);
+					
+				
+				final ClientRequest clientRequest2 = new ClientRequest(siteUrl + "rest/user/update/");
+				clientRequest2.body("application/xml", utilisateurGet );
+				
+				//CREDENTIALS
+				String username2 = currentLog;
+				String password2 = currentPass;
+				String base64encodedUsernameAndPassword = DatatypeConverter.printBase64Binary((username2 + ":" + password2).getBytes());
+				clientRequest2.header("Authorization", "Basic " +base64encodedUsernameAndPassword );
+				///////////////////
+				
+				
+				final ClientResponse<String> clientResponse2 = clientRequest2.post(String.class);
+				
+				System.out.println("\n\n"+clientResponse2.getEntity()+"\n\n");
+				
+				if (clientResponse2.getStatus() == 200) { // ok !
+					
+					messageType = "success";
+					messageValue = "Un nouveau mot de passe vient de vous être envoyé par mail.";
+					actionValid = true;				
+					
+					//mail de nouveau mdp
+					  
+					 new SendMailTLS(mail,"\n \n Bonjour "+utilisateurGet.getConnexion().getLogin()+" !"
+					 +"\n \n Votre nouveau mot de passe est:    " +newPass +"   ");
+					
+						
+				}else{
+					messageType= "danger";
+					messageValue="Nous avons rencontré un problème. Veuillez reéssayer.";
+					actionValid = true;		
+				}
+			} catch (final Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+	
 %>
 <!doctype html>
 <html lang="en">
@@ -461,7 +554,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="contactModalLabel">Mot de passe oublié</h4>
 					</div>
-					<form method="POST" id="passwordlost" name="passwordlost" class="form-horizontal">
+					<form method="POST" action="index.jsp" id="passwordlost" name="passwordlost" class="form-horizontal">
 						<div class="modal-body">
 							<p>Vous avez oublié votre mot de passe ? Complétez le formulaire ci-dessous.</p><br />
 							
@@ -479,7 +572,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" id="sendMessage" class="btn btn-info">Envoyer <i class="glyphicon glyphicon-send"></i></button>
+							<button type="submit" id="sendMessage" class="btn btn-info">Envoyer <i class="glyphicon glyphicon-send"></i></button>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
 						</div>
 					</form>
