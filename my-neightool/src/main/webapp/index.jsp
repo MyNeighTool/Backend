@@ -274,10 +274,10 @@
 						final Utilisateur utilisateur = it.next();
 	
 						try {
-							if (utilisateur.getAdresse().getLatitude() > 0
-									&& utilisateur.getAdresse().getLatitude() < 90
-									&& utilisateur.getAdresse().getLongitude() > 0
-									&& utilisateur.getAdresse().getLongitude() < 90) {
+							if (utilisateur.getAdresse().getLatitude() >= -90
+									&& utilisateur.getAdresse().getLatitude() <= 90
+									&& utilisateur.getAdresse().getLongitude() >= -180
+									&& utilisateur.getAdresse().getLongitude() <= 180) {
 								out.println("<option value='" + num + "'>"
 										+ utilisateur.getNom() + "/"
 										+ utilisateur.getAdresse().getLatitude() + "/"

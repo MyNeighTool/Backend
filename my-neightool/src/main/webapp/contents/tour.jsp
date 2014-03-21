@@ -49,16 +49,83 @@ $(function() {
 					<p>Pour plus d'informations sur les conditions d'utilisations du site, référez-vous au <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#terms">conditions générales d'utilisation</a> (va fermer cette fenêtre).</p>
 				</div>
 				<div id="pageTour2" style="display:none;">
-					A completer
+					<div class="perfectCenter">
+						<h4><strong>Ajouter votre premier objet !</strong></h4>
+						<hr />
+					</div>
+						<p>Suivez ces étapes :</p>
+						<ol>
+							<li>
+								Cliquez sur le menu du haut "Mes Objets".					
+							</li> 
+							<li>
+								Puis sur "+ Ajouter un objet" dans le menu latéral qui vient d'apparaitre.<br/><br/>
+								<img src="./dist/img/lateralAjoutObjet.png" style="width:auto;height:120px;"><br/>
+							</li> 
+							<li>
+								Remplissez tous les champs du formulaire qui vient d'apparaitre.					
+							</li> 
+						</ol>
 				</div>
 				<div id="pageTour3" style="display:none;">
-					A completer
+					<div class="perfectCenter">
+						<h4><strong>Communiquez !</strong></h4>
+						<hr />
+					</div>
+					<p>Suivez ces étapes :</p>
+						<ol>
+							<li>
+								Cliquez sur le menu du haut "Mes Messages".					
+							</li> 
+							<li>
+								Puis sur "Nouveau Message" dans le menu latéral qui vient d'apparaitre.<br/><br/>
+								<img src="./dist/img/lateralAjoutMessage.png" style="width:auto;height:120px;"><br/>
+							</li> 
+							<li>
+								Rentrez le nom d'utilisateur de votre destinataire, un objet et un message dans le formulaire qui vient d'apparaitre.					
+							</li> 
+						</ol>
 				</div>
 				<div id="pageTour4" style="display:none;">
-					A completer
+					<div class="perfectCenter">
+						<h4><strong>Recherchez !</strong></h4>
+						<hr />
+					</div>
+					<p>Suivez ces étapes :</p>
+						<ol>
+							<li>
+								Cliquez sur le champ "Rechercher", dans la barre du haut, tapez votre recherche puis appuyez sur la touche "Entrée". Pour faire une recherche détaillée, cliquez dans la barre de recherche puis sur le bouton "Recherche détaillée".<br/><br/>
+								<img src="./dist/img/barreRecherche.png" style="width:auto;height:120px;"><br/>								
+							</li> 
+							<li>
+								Vous pouvez ensuite cumuler jusqu'à quatre critères de recherche détaillé : par nom, catégorie, distance et caution.<br/><br/>
+								<img src="./dist/img/critèreRecherche.png" style="width:auto;height:200px;"><br/>
+							</li> 
+							<li>
+								L'affichage des résultats peut se faire sous deux formes :	par liste ou sur la carte.				
+							</li> 
+						</ol>
 				</div>
 				<div id="pageTour5" style="display:none;">
-					A completer
+					<div class="perfectCenter">
+						<h4><strong>Empruntez !</strong></h4>
+						<hr />
+					</div>
+					<p>Suivez ces étapes :</p>
+					<ol>
+							<li>
+								En bas à doite de chaque objet se trouve un bouton pour demander un emprunt. 
+								<img src="./dist/img/DemanderEmprunt.png" style="width:auto;height:40px;"><br/>								
+							</li> 
+							<li>
+								Avant de cliquer sur celui-çi, vous pouvez regarder sur la fiche de l'objet les dates possibles ainsi que les réservations déjà programmées.
+								<img src="./dist/img/listeDispos.png" style="width:auto;height:100px;"><br/>
+							</li> 
+							<li>
+								La demande se fait en deux temps, premièrement avec le bouton de vérification de la date d'emprunt, deuxièment avec celui de validation.
+								<img src="./dist/img/formulaireDemande.png" style="width:auto;height:200px;">
+							</li> 
+					</ol>
 				</div>
 			</div>
 			<div class="modal-footer">

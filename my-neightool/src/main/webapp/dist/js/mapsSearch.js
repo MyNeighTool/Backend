@@ -71,7 +71,7 @@ function extractFromSelect() {
 				+ '<tr>'
 				+ '<th style="vertical-align:middle; text-align:center;" width="100px">Photo</th>'
 				+ '<th style="vertical-align:middle; text-align:center;" width="40%">Description</th>'
-				+ '<th style="vertical-align:middle; text-align:center;" width="20%">Preteur</th>'
+				+ '<th style="vertical-align:middle; text-align:center;" width="20%">Prêteur</th>'
 				+ '<th style="vertical-align:middle; text-align:center;" width="10%">Caution</th>'
 				+ '<th style="vertical-align:middle; text-align:center;" width="10%">Distance</th>'
 				+ '</tr>' + '</thead>' + '<tbody>';

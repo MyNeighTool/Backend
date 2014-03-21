@@ -108,7 +108,7 @@ function calculateDistances() {
 	      var results = response.rows[i].elements;
 	      //addMarker(origins[i], false);
 	      for (var j = 0; j < results.length; j++) {
-	    	 if(results[j].distance.value < 100000)
+	    	 if(results[j].distance.value < 150000)
 	    		 {
 	    		 	markerInfowindow = new google.maps.InfoWindow({
 	    		      maxWidth: 200
