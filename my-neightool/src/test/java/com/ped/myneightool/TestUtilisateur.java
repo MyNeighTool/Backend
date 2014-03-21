@@ -191,7 +191,7 @@ public class TestUtilisateur {
 			final Connexion connexion = new Connexion("4loginGet",CryptHandler.encodedPw("passwordGet"));
 			final Date birthDate = new Date(0);
 			final Adresse adresse = new Adresse("666 rue de France","33000","Bordeaux","France",20,20);
-			final Utilisateur utilisateur= new Utilisateur("JeanGet","DucheminGet",connexion,"4jean-duchemin@gmail.com","0606060606",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Patrice","de Mac Mahon",connexion,"4jean-duchemin@gmail.com","0606060606",adresse,birthDate);
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 			
 			LOG.info("");
@@ -231,7 +231,7 @@ public class TestUtilisateur {
 			final Connexion connexion = new Connexion("loginGetUserByLogin",CryptHandler.encodedPw("fdkjfds"));
 			final Date birthDate = new Date(0);
 			final Adresse adresse = new Adresse("30 avenue des champs Elysées","75000","Paris","France",30,30);
-			final Utilisateur utilisateur= new Utilisateur("JeanGet","DucheminGet",connexion,"pommeDeTerre@gmail.com","0606060606",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Adolphe","Thiers",connexion,"pommeDeTerre@gmail.com","0606060606",adresse,birthDate);
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 			
 			LOG.info("");
@@ -270,7 +270,7 @@ public class TestUtilisateur {
 
 		try{
 			final Connexion connexion = new Connexion("admin1",CryptHandler.encodedPw("admin1"));
-			final Utilisateur utilisateur= new Utilisateur("JeanDelete","DucheminDelete",connexion,"5jean-duchemin@gmail.com","0606060606");
+			final Utilisateur utilisateur= new Utilisateur("Louis-Napoléon","Bonaparte",connexion,"5jean-duchemin@gmail.com","0606060606");
 			utilisateur.setRole("ADMIN");
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 					

@@ -42,10 +42,10 @@ public class TestEmprunt {
 										Date.class);
 		crb= new ClientRequestBuilder(jaxbc);
 		
-		final Connexion connexion = new Connexion("adminCategorieOutilEmprunt",CryptHandler.encodedPw("admin"));
+		final Connexion connexion = new Connexion("adminCOE",CryptHandler.encodedPw("admin"));
 		final Adresse adresse = new Adresse("9 Rue du Faubourg Saint-Honoré","75008","Paris","France", (float) 2.322341 , (float) 48.868674);
 		final Date birthDate = new Date();
-		final Utilisateur utilisateur= new Utilisateur("admin","admin",connexion,"adminCategorieOutilEmprunt@myneightool.com","0000000000",adresse,birthDate);
+		final Utilisateur utilisateur= new Utilisateur("Bernard","Tapire",connexion,"barnard.tapire@myneightool.com","0000000000",adresse,birthDate);
 		utilisateur.setRole("ADMIN");
 		utilisateurAdmin = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 	}
@@ -66,7 +66,7 @@ public class TestEmprunt {
 			final Adresse adresse = new Adresse("52 Quai Deschamps","33000","Bordeaux","France", (float)-0.555285, (float)44.83635);
 			final Date birthDate = new Date(0);
 			
-			final Utilisateur u = new Utilisateur("userPrenomEmpruntDate","userNomEmpruntDate",connexion,"mailemprunt@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur u = new Utilisateur("Louis","LaBrocante",connexion,"louis.labrocante@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur uPost= (Utilisateur) crb.httpRequestXMLBody(u,"user/create");
 		
 			final Outil o= new Outil(uPost,"Haltères","savoir soulever",true,cat,50,new Date(0),new Date(),"http://localhost:8080/uploads/img/haltere.jpg");

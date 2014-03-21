@@ -52,12 +52,12 @@ public class TestMessage {
 			final Adresse adresse = new Adresse("18 rue Sainte-Catherine","33000","Bordeaux","France",44,0);
 			final Date birthDate = new Date(0);
 			
-			final Utilisateur utilisateur= new Utilisateur("JeanEmetteur","DucheminEmetteur",connexion,"message1@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Bernard","Campan",connexion,"bernard.campan@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 			
 			
 			final Connexion connexion2 = new Connexion("loginCreateMessage2",CryptHandler.encodedPw("passwordCreateMessage2"));
-			final Utilisateur utilisateur2= new Utilisateur("JacquesDestinataire","DucheminDestinataire",connexion2,"messagsqdq@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur utilisateur2= new Utilisateur("Didier","Bourdon",connexion2,"didier.bourdon@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur utilisateurPost2 = (Utilisateur) crb.httpRequestXMLBody(utilisateur2,"user/create");
 						
 			final Date d = new Date();
@@ -89,12 +89,12 @@ public class TestMessage {
 			
 			final Adresse adresse = new Adresse("19 rue Sainte-Catherine","33000","Bordeaux","France",44,0);
 			final Date birthDate = new Date(0);
-			final Utilisateur utilisateur= new Utilisateur("JeanEmetteurGet","DucheminEmetteurGet",co,"message2@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Nicolas","Le Petit",co,"nicolas.lepetit@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 			
 			
 			
-			final Utilisateur utilisateur2= new Utilisateur("JacquesDestinataireGet","DucheminDestinataireGet",co3,"message3@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur utilisateur2= new Utilisateur("François","Le Coquin",co3,"françois.lecoquinou@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur utilisateurPost2 = (Utilisateur) crb.httpRequestXMLBody(utilisateur2,"user/create");
 						
 			final Date d = new Date();
@@ -134,10 +134,10 @@ public class TestMessage {
 			
 			final Adresse adresse = new Adresse("4 rue Sainte-Catherine","33000","Bordeaux","France",44,0);
 			final Date birthDate = new Date(0);
-			final Utilisateur utilisateur= new Utilisateur("JeanEmetteur2","DucheminEmetteur2",co,"jean.duchemin@mail.com","0152830465",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Jacques","Chirac",co,"jacques.chirac@mail.com","0152830465",adresse,birthDate);
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 			
-			final Utilisateur utilisateur2= new Utilisateur("JacquesDestinataire","DucheminDestinataire",co3,"message4@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur utilisateur2= new Utilisateur("François","Mitterrand",co3,"françois.mitterand@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur utilisateurPost2 = (Utilisateur) crb.httpRequestXMLBody(utilisateur2,"user/create");
 						
 			final Date d = new Date();
@@ -182,13 +182,13 @@ public class TestMessage {
 			final Date birthDate = new Date(0);
 			
 			
-			final Utilisateur user1 = new Utilisateur("Toto","Titi",c1,"message5@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user1 = new Utilisateur("Valérie","Giscard d'Estaing",c1,"message5@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user1Post= (Utilisateur) crb.httpRequestXMLBody(user1,"user/create");
-			final Utilisateur user2 = new Utilisateur("Momo","Mimi",c2,"message6@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user2 = new Utilisateur("Alain","Poher",c2,"message6@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user2Post= (Utilisateur) crb.httpRequestXMLBody(user2,"user/create");
-			final Utilisateur user3 = new Utilisateur("Momo","Mimi",c3,"message7@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user3 = new Utilisateur("Georges","Pompidou",c3,"message7@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user3Post= (Utilisateur) crb.httpRequestXMLBody(user3,"user/create");
-			final Utilisateur user4 = new Utilisateur("Momo","Mimi",c4,"message8@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user4 = new Utilisateur("Charles","de Gaulle",c4,"message8@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user4Post= (Utilisateur) crb.httpRequestXMLBody(user4,"user/create");
 
 			final Date d= new Date();
@@ -250,13 +250,13 @@ public class TestMessage {
 			final Adresse adresse = new Adresse("6 rue Sainte-Catherine","33000","Bordeaux","France",44,0);
 			final Date birthDate = new Date();
 			
-			final Utilisateur user1 = new Utilisateur("Toto","Titi",c1,"message9@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user1 = new Utilisateur("René","Coty",c1,"message9@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user1Post= (Utilisateur) crb.httpRequestXMLBody(user1,"user/create");
-			final Utilisateur user2 = new Utilisateur("Momo","Mimi",c2,"message10@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user2 = new Utilisateur("Vincent","Auriol",c2,"message10@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user2Post= (Utilisateur) crb.httpRequestXMLBody(user2,"user/create");
-			final Utilisateur user3 = new Utilisateur("Momo","Mimi",c3,"message11@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user3 = new Utilisateur("Albert","Lebrun",c3,"message11@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user3Post= (Utilisateur) crb.httpRequestXMLBody(user3,"user/create");
-			final Utilisateur user4 = new Utilisateur("Momo","Mimi",c4,"message12@mail.com","0102030405",adresse,birthDate);
+			final Utilisateur user4 = new Utilisateur("Paul","Doumer",c4,"message12@mail.com","0102030405",adresse,birthDate);
 			final Utilisateur user4Post= (Utilisateur) crb.httpRequestXMLBody(user4,"user/create");
 
 			final Date d= new Date();

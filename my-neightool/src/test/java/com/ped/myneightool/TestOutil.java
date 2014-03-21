@@ -52,7 +52,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("27 Avenue de la Gare","33240","Saint-André-de-Cubzac","France",(float)-0.440313,(float)44.992559);
 			final Date birthDate = new Date(0);
 			
-			final Utilisateur utilisateur= new Utilisateur("admin","admin",connexion,"adminCategorieOutil@myneightool.com","0000000000",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Gaston","Doumergue",connexion,"adminCategorieOutil@myneightool.com","0000000000",adresse,birthDate);
 			utilisateur.setRole("ADMIN");
 			utilisateurAdmin = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 									
@@ -78,7 +78,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("5 Rue César Campinchi","20200","Bastia","France", (float) 9.448434, (float) 42.697971);
 			final Date birthDate = new Date();
 			Connexion co = new Connexion("login1",CryptHandler.encodedPw("pass1"));
-			final Utilisateur utilisateur= new Utilisateur("prenomCreateOutil","nomCreateOutil",co,"mail@mail.com","0101010101",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Alexandre","Millerand",co,"mail@mail.com","0101010101",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			
 			final Date debutT = new Date(0);
@@ -117,7 +117,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("1-13 Rue Edgar Degas","33700","Mérignac","France", (float) -0.667294, (float) 44.828056);
 			final Date birthDate = new Date();
 			Connexion co = new Connexion("login2",CryptHandler.encodedPw("pass2"));
-			final Utilisateur utilisateur= new Utilisateur("JeanUpdateTool","DucheminUpdateTool",co,"mail2@mail.com","0101010101",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Paul","Deschanel",co,"mail2@mail.com","0101010101",adresse,birthDate);
 			final Utilisateur utilisateurPost = (Utilisateur) crb.httpRequestXMLBody(utilisateur,"user/create");
 			
 			
@@ -153,7 +153,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("1 Quai Louis XVIII","33000","Bordeaux","France", (float) -0.570027, (float) 44.842573);
 			final Date birthDate = new Date();
 			Connexion co = new Connexion("login3",CryptHandler.encodedPw("pass3"));
-			final Utilisateur utilisateur= new Utilisateur("prenomGetOutil","nomGetOutil",co,"mail3@mail.com","0101010101",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Raymond","Poincare",co,"mail3@mail.com","0101010101",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			
 			final Outil outil= new Outil(utilisateurPost,"CasserolleGet","savoir cuisiner",true,cat,56, new Date(0), myDate,chemin+"casserolle.jpg");
@@ -198,7 +198,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("91 Rue François de Sourdis","33000","Bordeaux","France", (float) -0.587491, (float) 44.831347);
 			final Date birthDate = new Date();
 			Connexion co = new Connexion("login4",CryptHandler.encodedPw("pass4"));
-			final Utilisateur utilisateur= new Utilisateur("prenomDeleteOutil","nomDeleteOutil",co,"mail4@mail.com","0404040404",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Armand","Fallieres",co,"mail4@mail.com","0404040404",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			
 			
@@ -272,7 +272,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("733 Cours de la Liberation","33400","Talence","France", (float) -0.602624, (float) 44.796637);
 			final Date birthDate = new Date();
 			Connexion co = new Connexion("login5",CryptHandler.encodedPw("pass5"));
-			final Utilisateur utilisateur= new Utilisateur("prenomGetOutils","nomGetOutils",co,"mail5@mail.com","0505050555",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Emile","Loubet",co,"mail5@mail.com","0505050555",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			
 			crb.httpRequestXMLBody(new Outil(utilisateurPost,"Cric","savoir cric mais cric pas disponible",false,cat,15, new Date(0), myDate,chemin+"cric.jpg"), "tool/create");
@@ -318,7 +318,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("Université Montesquieu - Bordeaux IV","33400","Talence","France", (float) -0.600572, (float) 44.806564);
 			final Date birthDate = new Date();
 			Connexion co = new Connexion("login6",CryptHandler.encodedPw("pass6"));
-			final Utilisateur utilisateur= new Utilisateur("prenomGetOutils","nomGetOutils",co,"mail6@mail.com","6666666666",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Felix","Faure",co,"mail6@mail.com","6666666666",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			
 			crb.httpRequestXMLBody(new Outil(utilisateurPost,"Autre1","savoir autre1",true,cat,44, new Date(0), myDate,chemin+"outils.jpg"), "tool/create");
@@ -366,7 +366,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("691-735 Avenue du Las","33127","Saint-Jean-D'Illac","France", (float) -0.787779, (float) 44.808193);
 			final Date birthDate = new Date(0);
 			Connexion co = new Connexion("login8",CryptHandler.encodedPw("pass8"));
-			final Utilisateur utilisateur= new Utilisateur("prenomGetOutils","nomGetOutils",co,"mail8@mail.com","8888888888",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Jean","Casimir-Perier",co,"mail8@mail.com","8888888888",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			
 			crb.httpRequestXMLBody(new Outil(utilisateurPost,"OutilPro1","savoir être pro",true,cat,88, new Date(0), myDate,chemin+"outils.jpg"), "tool/create");
@@ -415,7 +415,7 @@ public class TestOutil {
 			final Adresse adresse = new Adresse("9 Allée des Fleurs","33320","Eysines","France", (float) -0.636744, (float) 44.865434);
 			final Date birthDate = new Date(0);
 			Connexion co = new Connexion("login9",CryptHandler.encodedPw("pass9"));
-			final Utilisateur utilisateur= new Utilisateur("prenomAPICriteria","nomAPICriteria",co,"mail9@mail.com","9999999999",adresse,birthDate);
+			final Utilisateur utilisateur= new Utilisateur("Marie-François-Sadi","Carnot",co,"mail9@mail.com","9999999999",adresse,birthDate);
 			final Utilisateur utilisateurPost= (Utilisateur) crb.httpRequestXMLBody(utilisateur, "user/create");
 			Assert.assertNotSame(utilisateurPost, null);
 			
@@ -468,7 +468,7 @@ public class TestOutil {
 			final Categorie categorie = new Categorie("Jardin");
 			final Categorie categoriePost = (Categorie) crb.httpRequestXMLBodyCategorie(categorie, "categorie/create",utilisateurAdmin);
 			
-			Utilisateur user1= new Utilisateur("Jean", "Dupont", new Connexion("loginTestOutil",CryptHandler.encodedPw( "pwd")), "test@test", "0505050505", new Adresse(), new Date());
+			Utilisateur user1= new Utilisateur("Jules", "Grevy", new Connexion("loginTestOutil",CryptHandler.encodedPw( "pwd")), "test@test", "0505050505", new Adresse(), new Date());
 			Utilisateur user= (Utilisateur) crb.httpRequestXMLBody(user1, "user/create");
 			
 			crb.httpRequestXMLBody(new Outil(user,"Rateau","savoir ratisser",true,categoriePost,1, new Date(0), myDate,chemin+"rateau.jpg"), "tool/create");
