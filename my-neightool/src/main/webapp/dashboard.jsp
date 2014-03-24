@@ -262,7 +262,9 @@
 			</footer>
 		</div>
 		<jsp:include page="<%=contentFolder+"terms.jsp"%>" />
-		<jsp:include page="<%=contentFolder+"contact.jsp"%>" />
+		<% if(request.getParameter("attemp")==null) { %>
+			<jsp:include page="<%=contentFolder+"contact.jsp"%>" />
+		<% } %>
 		<jsp:include page="<%=contentFolder+"faq.jsp"%>" />
 		<jsp:include page="<%=contentFolder+"tour.jsp"%>" />
 	</body>

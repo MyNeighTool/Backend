@@ -576,5 +576,8 @@
 				</div>
 			</div>
 		</div>
+		<jsp:include page="<%=contentFolder+"terms.jsp"%>" />
+		<jsp:include page="<%=contentFolder+"contact.jsp"%>" />
+		<jsp:include page="<%=contentFolder+"faq.jsp"%>" />
 	</body>
 </html>

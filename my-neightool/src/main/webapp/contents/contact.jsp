@@ -79,7 +79,7 @@ $(function() {
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="sendMessage" class="btn btn-info"><i class="glyphicon glyphicon-send"></i> Envoyer</button>
+					<button type="button" id="sendMessage" class="btn btn-info"><span class="glyphicon glyphicon-send"></span> Envoyer</button>
 					<button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">Fermer</button>
 				</div>
 			</form>
