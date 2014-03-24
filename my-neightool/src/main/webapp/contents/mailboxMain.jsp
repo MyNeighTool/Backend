@@ -156,7 +156,16 @@ $(function(){
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li><a href="dashboard.jsp?idCat=0">Accueil</a></li>
-			<li class="active">Boite de réception (<span id="nbMessageInbox"><%=messagesDto.size()%></span>/<%=nbMaxMessagesAllowed%> messages)</li>
+			<li class="active">Boite de réception (<span id="nbMessageInbox"><%
+			int nb = 0;
+			for (Message m : messagesDto.getListeMessages()) { 
+				if(m.getEtatDestinataire() != 3)
+				{
+					nb++;
+				}
+			}
+			out.print(nb);
+			%></span>/<%=nbMaxMessagesAllowed%> messages)</li>
 		</ol>
 	</div>
 	<% if(request.getParameter("mValue")!=null && request.getParameter("mValue")!="") { %>

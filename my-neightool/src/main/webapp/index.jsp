@@ -210,7 +210,7 @@
 	} else {
 		messageType = "danger";
 		messageValue = "Il semble y avoir une erreur lors de votre connexion/inscription.";
-	}
+			}
 		}
 	}
 
@@ -544,9 +544,6 @@
 				</p>
 			</footer>
 		</div>
-		<jsp:include page="<%=contentFolder + "terms.jsp"%>" />
-		<jsp:include page="<%=contentFolder + "contact.jsp"%>" />
-		<jsp:include page="<%=contentFolder + "faq.jsp"%>" />
 		<div class="modal fade" id="lostpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">

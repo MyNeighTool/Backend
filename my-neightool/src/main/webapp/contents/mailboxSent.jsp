@@ -138,7 +138,16 @@ $(function(){
 
 <ol class="breadcrumb">
 	<li><a href="dashboard.jsp?idCat=0">Accueil</a></li>
-	<li class="active">Boite d'envoi (<span id="nbMessageInbox"><%=messagesDto.size()%></span>/<%=nbMaxMessagesAllowed %> messages)</li>
+	<li class="active">Boite d'envoi (<span id="nbMessageInbox"><%
+			int nb = 0;
+			for (Message m : messagesDto.getListeMessages()) { 
+				if(m.getEtatEmetteur() == 0)
+				{
+					nb++;
+				}
+			}
+			out.print(nb);
+	%></span>/<%=nbMaxMessagesAllowed %> messages)</li>
 </ol>
 
 <div class="table-responsive">
