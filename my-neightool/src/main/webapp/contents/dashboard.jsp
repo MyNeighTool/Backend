@@ -123,7 +123,7 @@
 				<% if((request.getParameter("idCat")!=null && request.getParameter("idCat").equals("0")) || request.getParameter("idCat")==null) { %>
 					active
 				<% } %>
-				"><a href="dashboard.jsp?idCat=0">Objets dans ma région <span class="badge pull-right"><%=listeAllTools.size() %></span></a></li>
+				"><a href="dashboard.jsp?idCat=0">Tous les outils <span class="badge pull-right"><%=listeAllTools.size() %></span></a></li>
 			</ul>
 			<hr />
 			<ul class="nav nav-pills nav-stacked">
@@ -174,11 +174,11 @@
 							}
 						}
 						else { %>
-							<li class="active">Les plus regardés dans votre région (< 50km)</li>
+							<li class="active">Tous les outils</li>
 						<% }
 					}
 					else { %>
-						<li class="active">Les plus regardés dans votre région (< 50km)</li>
+						<li class="active">Tous les outils</li>
 					<% } %>
 				</ol>
 				
