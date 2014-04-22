@@ -13,7 +13,7 @@
 
 > Choisir un "profile" ou créer un nouveau "profile"
 
-> Renseigner le chemin et le nom de la base de données entre les chevrons du champ "<jdbc.url>" "</jdbc.url>"
+> Renseigner le chemin et le nom de la base de données entre les chevrons du champ "jdbc.url"
 
 > Renseigner le login et password d'accès à la base de données
 
