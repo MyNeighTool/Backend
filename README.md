@@ -1,6 +1,6 @@
 - Base de données:
 
-> Choisir une bonne de données MySQL
+> Choisir une base de données MySQL
 
 > Créer un nom de base de données dans celle-ci
 
@@ -13,7 +13,7 @@
 
 > Choisir un "profile" ou créer un nouveau "profile"
 
-> Renseigner le chemin et le nom de la base de données entre les chevrons du champ <jdbc.url></jdbc.url>
+> Renseigner le chemin et le nom de la base de données entre les chevrons du champ "<jdbc.url>" "</jdbc.url>"
 
 > Renseigner le login et password d'accès à la base de données
 
@@ -31,7 +31,7 @@
 
 - Exécuter le project avec Maven et Jetty:
 
-> Lancer la commande:  $mvn jetty:run -P<profile-name>
+> Lancer la commande:  $mvn jetty:run -P"profile-name"
 
 
 
